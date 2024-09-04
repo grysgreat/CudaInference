@@ -7,7 +7,6 @@
 #include <string>
 #include <memory>
 
-#include <cublas.h>
 #include <cublas_v2.h>
 
 

@@ -85,445 +85,287 @@ int main(int argc, const char** argv)
         // layer1
 
             // block1
-        ConvLayer* layer1_0_conv1 = new ConvLayer(cublas_handle, w_path+"layer1.0.conv1", 0, 1, false);
+        ConvLayer* layer1_0_conv1 = new ConvLayer(cublas_handle, w_path+"layer1.0.conv1", 1, 1, false);
         BatchNormLayer* layer1_0_bn1 = new BatchNormLayer(w_path+"layer1.0.bn1");
         ReluLayer* layer1_0_relu1 = new ReluLayer();
-
         ConvLayer* layer1_0_conv2 = new ConvLayer(cublas_handle, w_path+"layer1.0.conv2", 1, 1, false);
         BatchNormLayer* layer1_0_bn2 = new BatchNormLayer(w_path+"layer1.0.bn2");
         ReluLayer* layer1_0_relu2 = new ReluLayer();
 
-        ConvLayer* layer1_0_conv3 = new ConvLayer(cublas_handle, w_path+"layer1.0.conv3", 0, 1, false);
-        BatchNormLayer* layer1_0_bn3 = new BatchNormLayer(w_path+"layer1.0.bn3");
-        ReluLayer* layer1_0_relu3 = new ReluLayer();
-
-
-            // downsample
-        ConvLayer* layer1_0_downsample_0_conv = new ConvLayer(cublas_handle, w_path+"layer1.0.downsample.0", 0, 1, false);
-        BatchNormLayer* layer1_0_downsample_1_bn = new BatchNormLayer(w_path+"layer1.0.downsample.1");
-
-
-
         layer1_0_conv1->set_input(mp1->get_output());
         layer1_0_bn1->set_input(layer1_0_conv1->get_output());
         layer1_0_relu1->set_input(layer1_0_bn1->get_output());
-
         layer1_0_conv2->set_input(layer1_0_relu1->get_output());
         layer1_0_bn2->set_input(layer1_0_conv2->get_output());
         layer1_0_relu2->set_input(layer1_0_bn2->get_output());
 
-        layer1_0_conv3->set_input(layer1_0_relu2->get_output());
-        layer1_0_bn3->set_input(layer1_0_conv3->get_output());
-        layer1_0_relu3->set_input(layer1_0_bn3->get_output());
-
-            // downsample
-        layer1_0_downsample_0_conv->set_input(mp1->get_output());
-        layer1_0_downsample_1_bn->set_input(layer1_0_downsample_0_conv->get_output());
-
             // block2
-        ConvLayer* layer1_1_conv1 = new ConvLayer(cublas_handle, w_path+"layer1.1.conv1", 0, 1, false);
+        ConvLayer* layer1_1_conv1 = new ConvLayer(cublas_handle, w_path+"layer1.1.conv1", 1, 1, false);
         BatchNormLayer* layer1_1_bn1 = new BatchNormLayer(w_path+"layer1.1.bn1");
         ReluLayer* layer1_1_relu1 = new ReluLayer();
-
         ConvLayer* layer1_1_conv2 = new ConvLayer(cublas_handle, w_path+"layer1.1.conv2", 1, 1, false);
         BatchNormLayer* layer1_1_bn2 = new BatchNormLayer(w_path+"layer1.1.bn2");
         ReluLayer* layer1_1_relu2 = new ReluLayer();
 
-        ConvLayer* layer1_1_conv3 = new ConvLayer(cublas_handle, w_path+"layer1.1.conv3", 0, 1, false);
-        BatchNormLayer* layer1_1_bn3 = new BatchNormLayer(w_path+"layer1.1.bn3");
-        ReluLayer* layer1_1_relu3 = new ReluLayer();
-
-        layer1_1_conv1->set_input(layer1_0_relu3->get_output());
+        layer1_1_conv1->set_input(layer1_0_relu2->get_output());
         layer1_1_bn1->set_input(layer1_1_conv1->get_output());
         layer1_1_relu1->set_input(layer1_1_bn1->get_output());
-        
         layer1_1_conv2->set_input(layer1_1_relu1->get_output());
         layer1_1_bn2->set_input(layer1_1_conv2->get_output());
         layer1_1_relu2->set_input(layer1_1_bn2->get_output());
 
-        layer1_1_conv3->set_input(layer1_1_relu2->get_output());
-        layer1_1_bn3->set_input(layer1_1_conv3->get_output());
-        layer1_1_relu3->set_input(layer1_1_bn3->get_output());
-
 
             // block3
-        ConvLayer* layer1_2_conv1 = new ConvLayer(cublas_handle, w_path+"layer1.2.conv1", 0, 1, false);
+        ConvLayer* layer1_2_conv1 = new ConvLayer(cublas_handle, w_path+"layer1.2.conv1", 1, 1, false);
         BatchNormLayer* layer1_2_bn1 = new BatchNormLayer(w_path+"layer1.2.bn1");
         ReluLayer* layer1_2_relu1 = new ReluLayer();
-
         ConvLayer* layer1_2_conv2 = new ConvLayer(cublas_handle, w_path+"layer1.2.conv2", 1, 1, false);
         BatchNormLayer* layer1_2_bn2 = new BatchNormLayer(w_path+"layer1.2.bn2");
         ReluLayer* layer1_2_relu2 = new ReluLayer();
 
-        ConvLayer* layer1_2_conv3 = new ConvLayer(cublas_handle, w_path+"layer1.2.conv3", 0, 1, false);
-        BatchNormLayer* layer1_2_bn3 = new BatchNormLayer(w_path+"layer1.2.bn3");
-        ReluLayer* layer1_2_relu3 = new ReluLayer();
-
-        layer1_2_conv1->set_input(layer1_1_relu3->get_output());
+        layer1_2_conv1->set_input(layer1_1_relu2->get_output());
         layer1_2_bn1->set_input(layer1_2_conv1->get_output());
         layer1_2_relu1->set_input(layer1_2_bn1->get_output());
-
         layer1_2_conv2->set_input(layer1_2_relu1->get_output());
         layer1_2_bn2->set_input(layer1_2_conv2->get_output());
         layer1_2_relu2->set_input(layer1_2_bn2->get_output());
 
-        layer1_2_conv3->set_input(layer1_2_relu2->get_output());
-        layer1_2_bn3->set_input(layer1_2_conv3->get_output());
-        layer1_2_relu3->set_input(layer1_2_bn3->get_output());
         // layer2
 
             // block1
-        ConvLayer* layer2_0_conv1 = new ConvLayer(cublas_handle, w_path+"layer2.0.conv1", 0, 1, false);
+        ConvLayer* layer2_0_conv1 = new ConvLayer(cublas_handle, w_path+"layer2.0.conv1", 1, 2, false);
         BatchNormLayer* layer2_0_bn1 = new BatchNormLayer(w_path+"layer2.0.bn1");
         ReluLayer* layer2_0_relu1 = new ReluLayer();
-
-        ConvLayer* layer2_0_conv2 = new ConvLayer(cublas_handle, w_path+"layer2.0.conv2", 1, 2, false);
+        ConvLayer* layer2_0_conv2 = new ConvLayer(cublas_handle, w_path+"layer2.0.conv2", 1, 1, false);
         BatchNormLayer* layer2_0_bn2 = new BatchNormLayer(w_path+"layer2.0.bn2");
         ReluLayer* layer2_0_relu2 = new ReluLayer();
 
-        ConvLayer* layer2_0_conv3 = new ConvLayer(cublas_handle, w_path+"layer2.0.conv3", 0, 1, false);
-        BatchNormLayer* layer2_0_bn3 = new BatchNormLayer(w_path+"layer2.0.bn3");
-        ReluLayer* layer2_0_relu3 = new ReluLayer();
             // downsample
         ConvLayer* layer2_0_downsample_0_conv = new ConvLayer(cublas_handle, w_path+"layer2.0.downsample.0", 0, 2, false);
         BatchNormLayer* layer2_0_downsample_1_bn = new BatchNormLayer(w_path+"layer2.0.downsample.1");
 
-        layer2_0_conv1->set_input(layer1_2_relu3->get_output());
+        layer2_0_conv1->set_input(layer1_2_relu2->get_output());
         layer2_0_bn1->set_input(layer2_0_conv1->get_output());
         layer2_0_relu1->set_input(layer2_0_bn1->get_output());
-
         layer2_0_conv2->set_input(layer2_0_relu1->get_output());
         layer2_0_bn2->set_input(layer2_0_conv2->get_output());
         layer2_0_relu2->set_input(layer2_0_bn2->get_output());
 
-        layer2_0_conv3->set_input(layer2_0_relu2->get_output());
-        layer2_0_bn3->set_input(layer2_0_conv3->get_output());
-        layer2_0_relu3->set_input(layer2_0_bn3->get_output());
             // downsample
-        layer2_0_downsample_0_conv->set_input(layer1_2_relu3->get_output());
+        layer2_0_downsample_0_conv->set_input(layer1_2_relu2->get_output());
         layer2_0_downsample_1_bn->set_input(layer2_0_downsample_0_conv->get_output());
 
             // block2
-        ConvLayer* layer2_1_conv1 = new ConvLayer(cublas_handle, w_path+"layer2.1.conv1", 0, 1, false);
+        ConvLayer* layer2_1_conv1 = new ConvLayer(cublas_handle, w_path+"layer2.1.conv1", 1, 1, false);
         BatchNormLayer* layer2_1_bn1 = new BatchNormLayer(w_path+"layer2.1.bn1");
         ReluLayer* layer2_1_relu1 = new ReluLayer();
-
         ConvLayer* layer2_1_conv2 = new ConvLayer(cublas_handle, w_path+"layer2.1.conv2", 1, 1, false);
         BatchNormLayer* layer2_1_bn2 = new BatchNormLayer(w_path+"layer2.1.bn2");
         ReluLayer* layer2_1_relu2 = new ReluLayer();
 
-        ConvLayer* layer2_1_conv3 = new ConvLayer(cublas_handle, w_path+"layer2.1.conv3", 0, 1, false);
-        BatchNormLayer* layer2_1_bn3 = new BatchNormLayer(w_path+"layer2.1.bn3");
-        ReluLayer* layer2_1_relu3 = new ReluLayer();
-
-        layer2_1_conv1->set_input(layer2_0_relu3->get_output());
+        layer2_1_conv1->set_input(layer2_0_relu2->get_output());
         layer2_1_bn1->set_input(layer2_1_conv1->get_output());
         layer2_1_relu1->set_input(layer2_1_bn1->get_output());
-
         layer2_1_conv2->set_input(layer2_1_relu1->get_output());
         layer2_1_bn2->set_input(layer2_1_conv2->get_output());
         layer2_1_relu2->set_input(layer2_1_bn2->get_output());
 
-        layer2_1_conv3->set_input(layer2_1_relu2->get_output());
-        layer2_1_bn3->set_input(layer2_1_conv3->get_output());
-        layer2_1_relu3->set_input(layer2_1_bn3->get_output());
 
             // block3
-        ConvLayer* layer2_2_conv1 = new ConvLayer(cublas_handle, w_path+"layer2.2.conv1", 0, 1, false);
+        ConvLayer* layer2_2_conv1 = new ConvLayer(cublas_handle, w_path+"layer2.2.conv1", 1, 1, false);
         BatchNormLayer* layer2_2_bn1 = new BatchNormLayer(w_path+"layer2.2.bn1");
         ReluLayer* layer2_2_relu1 = new ReluLayer();
-
         ConvLayer* layer2_2_conv2 = new ConvLayer(cublas_handle, w_path+"layer2.2.conv2", 1, 1, false);
         BatchNormLayer* layer2_2_bn2 = new BatchNormLayer(w_path+"layer2.2.bn2");
         ReluLayer* layer2_2_relu2 = new ReluLayer();
 
-        ConvLayer* layer2_2_conv3 = new ConvLayer(cublas_handle, w_path+"layer2.2.conv3", 0, 1, false);
-        BatchNormLayer* layer2_2_bn3 = new BatchNormLayer(w_path+"layer2.2.bn3");
-        ReluLayer* layer2_2_relu3 = new ReluLayer();
-
-        layer2_2_conv1->set_input(layer2_1_relu3->get_output());
+        layer2_2_conv1->set_input(layer2_1_relu2->get_output());
         layer2_2_bn1->set_input(layer2_2_conv1->get_output());
         layer2_2_relu1->set_input(layer2_2_bn1->get_output());
-
         layer2_2_conv2->set_input(layer2_2_relu1->get_output());
         layer2_2_bn2->set_input(layer2_2_conv2->get_output());
         layer2_2_relu2->set_input(layer2_2_bn2->get_output());
 
-        layer2_2_conv3->set_input(layer2_2_relu2->get_output());
-        layer2_2_bn3->set_input(layer2_2_conv3->get_output());
-        layer2_2_relu3->set_input(layer2_2_bn3->get_output());
 
             // block4
-        ConvLayer* layer2_3_conv1 = new ConvLayer(cublas_handle, w_path+"layer2.3.conv1", 0, 1, false);
+        ConvLayer* layer2_3_conv1 = new ConvLayer(cublas_handle, w_path+"layer2.3.conv1", 1, 1, false);
         BatchNormLayer* layer2_3_bn1 = new BatchNormLayer(w_path+"layer2.3.bn1");
         ReluLayer* layer2_3_relu1 = new ReluLayer();
-
         ConvLayer* layer2_3_conv2 = new ConvLayer(cublas_handle, w_path+"layer2.3.conv2", 1, 1, false);
         BatchNormLayer* layer2_3_bn2 = new BatchNormLayer(w_path+"layer2.3.bn2");
         ReluLayer* layer2_3_relu2 = new ReluLayer();
 
-        ConvLayer* layer2_3_conv3 = new ConvLayer(cublas_handle, w_path+"layer2.3.conv3", 0, 1, false);
-        BatchNormLayer* layer2_3_bn3 = new BatchNormLayer(w_path+"layer2.3.bn3");
-        ReluLayer* layer2_3_relu3 = new ReluLayer();
-
-        layer2_3_conv1->set_input(layer2_2_relu3->get_output());
+        layer2_3_conv1->set_input(layer2_2_relu2->get_output());
         layer2_3_bn1->set_input(layer2_3_conv1->get_output());
         layer2_3_relu1->set_input(layer2_3_bn1->get_output());
-
         layer2_3_conv2->set_input(layer2_3_relu1->get_output());
         layer2_3_bn2->set_input(layer2_3_conv2->get_output());
         layer2_3_relu2->set_input(layer2_3_bn2->get_output());
 
-        layer2_3_conv3->set_input(layer2_3_relu2->get_output());
-        layer2_3_bn3->set_input(layer2_3_conv3->get_output());
-        layer2_3_relu3->set_input(layer2_3_bn3->get_output());
         // layer3
 
             // block1
-        ConvLayer* layer3_0_conv1 = new ConvLayer(cublas_handle, w_path+"layer3.0.conv1", 0, 1, false);
+        ConvLayer* layer3_0_conv1 = new ConvLayer(cublas_handle, w_path+"layer3.0.conv1", 1, 2, false);
         BatchNormLayer* layer3_0_bn1 = new BatchNormLayer(w_path+"layer3.0.bn1");
         ReluLayer* layer3_0_relu1 = new ReluLayer();
-
-        ConvLayer* layer3_0_conv2 = new ConvLayer(cublas_handle, w_path+"layer3.0.conv2", 1, 2, false);
+        ConvLayer* layer3_0_conv2 = new ConvLayer(cublas_handle, w_path+"layer3.0.conv2", 1, 1, false);
         BatchNormLayer* layer3_0_bn2 = new BatchNormLayer(w_path+"layer3.0.bn2");
         ReluLayer* layer3_0_relu2 = new ReluLayer();
-
-        ConvLayer* layer3_0_conv3 = new ConvLayer(cublas_handle, w_path+"layer3.0.conv3", 0, 1, false);
-        BatchNormLayer* layer3_0_bn3 = new BatchNormLayer(w_path+"layer3.0.bn3");
-        ReluLayer* layer3_0_relu3 = new ReluLayer();
 
             // downsample
         ConvLayer* layer3_0_downsample_0_conv = new ConvLayer(cublas_handle, w_path+"layer3.0.downsample.0", 0, 2, false);
         BatchNormLayer* layer3_0_downsample_1_bn = new BatchNormLayer(w_path+"layer3.0.downsample.1");
 
-        layer3_0_conv1->set_input(layer2_3_relu3->get_output());
+        layer3_0_conv1->set_input(layer2_3_relu2->get_output());
         layer3_0_bn1->set_input(layer3_0_conv1->get_output());
         layer3_0_relu1->set_input(layer3_0_bn1->get_output());
-
         layer3_0_conv2->set_input(layer3_0_relu1->get_output());
         layer3_0_bn2->set_input(layer3_0_conv2->get_output());
         layer3_0_relu2->set_input(layer3_0_bn2->get_output());
 
-        layer3_0_conv3->set_input(layer3_0_relu2->get_output());
-        layer3_0_bn3->set_input(layer3_0_conv3->get_output());
-        layer3_0_relu3->set_input(layer3_0_bn3->get_output());
-
-        layer3_0_downsample_0_conv->set_input(layer2_3_relu3->get_output());
+        layer3_0_downsample_0_conv->set_input(layer2_3_relu2->get_output());
         layer3_0_downsample_1_bn->set_input(layer3_0_downsample_0_conv->get_output());
 
             // block2
-        ConvLayer* layer3_1_conv1 = new ConvLayer(cublas_handle, w_path+"layer3.1.conv1", 0, 1, false);
+        ConvLayer* layer3_1_conv1 = new ConvLayer(cublas_handle, w_path+"layer3.1.conv1", 1, 1, false);
         BatchNormLayer* layer3_1_bn1 = new BatchNormLayer(w_path+"layer3.1.bn1");
         ReluLayer* layer3_1_relu1 = new ReluLayer();
-
         ConvLayer* layer3_1_conv2 = new ConvLayer(cublas_handle, w_path+"layer3.1.conv2", 1, 1, false);
         BatchNormLayer* layer3_1_bn2 = new BatchNormLayer(w_path+"layer3.1.bn2");
         ReluLayer* layer3_1_relu2 = new ReluLayer();
 
-        ConvLayer* layer3_1_conv3 = new ConvLayer(cublas_handle, w_path+"layer3.1.conv3", 0, 1, false);
-        BatchNormLayer* layer3_1_bn3 = new BatchNormLayer(w_path+"layer3.1.bn3");
-        ReluLayer* layer3_1_relu3 = new ReluLayer();
-
-        layer3_1_conv1->set_input(layer3_0_relu3->get_output());
+        layer3_1_conv1->set_input(layer3_0_relu2->get_output());
         layer3_1_bn1->set_input(layer3_1_conv1->get_output());
         layer3_1_relu1->set_input(layer3_1_bn1->get_output());
-
         layer3_1_conv2->set_input(layer3_1_relu1->get_output());
         layer3_1_bn2->set_input(layer3_1_conv2->get_output());
         layer3_1_relu2->set_input(layer3_1_bn2->get_output());
 
-        layer3_1_conv3->set_input(layer3_1_relu2->get_output());
-        layer3_1_bn3->set_input(layer3_1_conv3->get_output());
-        layer3_1_relu3->set_input(layer3_1_bn3->get_output());
 
             // block3
-        ConvLayer* layer3_2_conv1 = new ConvLayer(cublas_handle, w_path+"layer3.2.conv1", 0, 1, false);
+        ConvLayer* layer3_2_conv1 = new ConvLayer(cublas_handle, w_path+"layer3.2.conv1", 1, 1, false);
         BatchNormLayer* layer3_2_bn1 = new BatchNormLayer(w_path+"layer3.2.bn1");
         ReluLayer* layer3_2_relu1 = new ReluLayer();
-
         ConvLayer* layer3_2_conv2 = new ConvLayer(cublas_handle, w_path+"layer3.2.conv2", 1, 1, false);
         BatchNormLayer* layer3_2_bn2 = new BatchNormLayer(w_path+"layer3.2.bn2");
         ReluLayer* layer3_2_relu2 = new ReluLayer();
 
-        ConvLayer* layer3_2_conv3 = new ConvLayer(cublas_handle, w_path+"layer3.2.conv3", 0, 1, false);
-        BatchNormLayer* layer3_2_bn3 = new BatchNormLayer(w_path+"layer3.2.bn3");
-        ReluLayer* layer3_2_relu3 = new ReluLayer();
-
-        layer3_2_conv1->set_input(layer3_1_relu3->get_output());
+        layer3_2_conv1->set_input(layer3_1_relu2->get_output());
         layer3_2_bn1->set_input(layer3_2_conv1->get_output());
         layer3_2_relu1->set_input(layer3_2_bn1->get_output());
-
         layer3_2_conv2->set_input(layer3_2_relu1->get_output());
         layer3_2_bn2->set_input(layer3_2_conv2->get_output());
         layer3_2_relu2->set_input(layer3_2_bn2->get_output());
 
-        layer3_2_conv3->set_input(layer3_2_relu2->get_output());
-        layer3_2_bn3->set_input(layer3_2_conv3->get_output());
-        layer3_2_relu3->set_input(layer3_2_bn3->get_output());
+
 
             // block4
-        ConvLayer* layer3_3_conv1 = new ConvLayer(cublas_handle, w_path+"layer3.3.conv1", 0, 1, false);
+        ConvLayer* layer3_3_conv1 = new ConvLayer(cublas_handle, w_path+"layer3.3.conv1", 1, 1, false);
         BatchNormLayer* layer3_3_bn1 = new BatchNormLayer(w_path+"layer3.3.bn1");
         ReluLayer* layer3_3_relu1 = new ReluLayer();
-
         ConvLayer* layer3_3_conv2 = new ConvLayer(cublas_handle, w_path+"layer3.3.conv2", 1, 1, false);
         BatchNormLayer* layer3_3_bn2 = new BatchNormLayer(w_path+"layer3.3.bn2");
         ReluLayer* layer3_3_relu2 = new ReluLayer();
 
-        ConvLayer* layer3_3_conv3 = new ConvLayer(cublas_handle, w_path+"layer3.3.conv3", 0, 1, false);
-        BatchNormLayer* layer3_3_bn3 = new BatchNormLayer(w_path+"layer3.3.bn3");
-        ReluLayer* layer3_3_relu3 = new ReluLayer();
-
-        layer3_3_conv1->set_input(layer3_2_relu3->get_output());
+        layer3_3_conv1->set_input(layer3_2_relu2->get_output());
         layer3_3_bn1->set_input(layer3_3_conv1->get_output());
         layer3_3_relu1->set_input(layer3_3_bn1->get_output());
-
         layer3_3_conv2->set_input(layer3_3_relu1->get_output());
         layer3_3_bn2->set_input(layer3_3_conv2->get_output());
         layer3_3_relu2->set_input(layer3_3_bn2->get_output());
 
-        layer3_3_conv3->set_input(layer3_3_relu2->get_output());
-        layer3_3_bn3->set_input(layer3_3_conv3->get_output());
-        layer3_3_relu3->set_input(layer3_3_bn3->get_output());
 
             // block5
-        ConvLayer* layer3_4_conv1 = new ConvLayer(cublas_handle, w_path+"layer3.4.conv1", 0, 1, false);
+        ConvLayer* layer3_4_conv1 = new ConvLayer(cublas_handle, w_path+"layer3.4.conv1", 1, 1, false);
         BatchNormLayer* layer3_4_bn1 = new BatchNormLayer(w_path+"layer3.4.bn1");
         ReluLayer* layer3_4_relu1 = new ReluLayer();
-
         ConvLayer* layer3_4_conv2 = new ConvLayer(cublas_handle, w_path+"layer3.4.conv2", 1, 1, false);
         BatchNormLayer* layer3_4_bn2 = new BatchNormLayer(w_path+"layer3.4.bn2");
         ReluLayer* layer3_4_relu2 = new ReluLayer();
 
-        ConvLayer* layer3_4_conv3 = new ConvLayer(cublas_handle, w_path+"layer3.4.conv3", 0, 1, false);
-        BatchNormLayer* layer3_4_bn3 = new BatchNormLayer(w_path+"layer3.4.bn3");
-        ReluLayer* layer3_4_relu3 = new ReluLayer();
-
-        layer3_4_conv1->set_input(layer3_3_relu3->get_output());
+        layer3_4_conv1->set_input(layer3_3_relu2->get_output());
         layer3_4_bn1->set_input(layer3_4_conv1->get_output());
         layer3_4_relu1->set_input(layer3_4_bn1->get_output());
-
         layer3_4_conv2->set_input(layer3_4_relu1->get_output());
         layer3_4_bn2->set_input(layer3_4_conv2->get_output());
         layer3_4_relu2->set_input(layer3_4_bn2->get_output());
 
-        layer3_4_conv3->set_input(layer3_4_relu2->get_output());
-        layer3_4_bn3->set_input(layer3_4_conv3->get_output());
-        layer3_4_relu3->set_input(layer3_4_bn3->get_output());
-
             // block6
-        ConvLayer* layer3_5_conv1 = new ConvLayer(cublas_handle, w_path+"layer3.5.conv1", 0, 1, false);
+        ConvLayer* layer3_5_conv1 = new ConvLayer(cublas_handle, w_path+"layer3.5.conv1", 1, 1, false);
         BatchNormLayer* layer3_5_bn1 = new BatchNormLayer(w_path+"layer3.5.bn1");
         ReluLayer* layer3_5_relu1 = new ReluLayer();
-
         ConvLayer* layer3_5_conv2 = new ConvLayer(cublas_handle, w_path+"layer3.5.conv2", 1, 1, false);
         BatchNormLayer* layer3_5_bn2 = new BatchNormLayer(w_path+"layer3.5.bn2");
         ReluLayer* layer3_5_relu2 = new ReluLayer();
 
-        ConvLayer* layer3_5_conv3 = new ConvLayer(cublas_handle, w_path+"layer3.5.conv3", 0, 1, false);
-        BatchNormLayer* layer3_5_bn3 = new BatchNormLayer(w_path+"layer3.5.bn3");
-        ReluLayer* layer3_5_relu3 = new ReluLayer();
-        layer3_5_conv1->set_input(layer3_4_relu3->get_output());
+        layer3_5_conv1->set_input(layer3_4_relu2->get_output());
         layer3_5_bn1->set_input(layer3_5_conv1->get_output());
         layer3_5_relu1->set_input(layer3_5_bn1->get_output());
-
         layer3_5_conv2->set_input(layer3_5_relu1->get_output());
         layer3_5_bn2->set_input(layer3_5_conv2->get_output());
         layer3_5_relu2->set_input(layer3_5_bn2->get_output());
 
-        layer3_5_conv3->set_input(layer3_5_relu2->get_output());
-        layer3_5_bn3->set_input(layer3_5_conv3->get_output());
-        layer3_5_relu3->set_input(layer3_5_bn3->get_output());
+
         // layer4
 
             // block1
-        ConvLayer* layer4_0_conv1 = new ConvLayer(cublas_handle, w_path+"layer4.0.conv1", 0, 1, false);
+        ConvLayer* layer4_0_conv1 = new ConvLayer(cublas_handle, w_path+"layer4.0.conv1", 1, 2, false);
         BatchNormLayer* layer4_0_bn1 = new BatchNormLayer(w_path+"layer4.0.bn1");
         ReluLayer* layer4_0_relu1 = new ReluLayer();
-
-        ConvLayer* layer4_0_conv2 = new ConvLayer(cublas_handle, w_path+"layer4.0.conv2", 1, 2, false);
+        ConvLayer* layer4_0_conv2 = new ConvLayer(cublas_handle, w_path+"layer4.0.conv2", 1, 1, false);
         BatchNormLayer* layer4_0_bn2 = new BatchNormLayer(w_path+"layer4.0.bn2");
         ReluLayer* layer4_0_relu2 = new ReluLayer();
 
-        ConvLayer* layer4_0_conv3 = new ConvLayer(cublas_handle, w_path+"layer4.0.conv3", 0, 1, false);
-        BatchNormLayer* layer4_0_bn3 = new BatchNormLayer(w_path+"layer4.0.bn3");
-        ReluLayer* layer4_0_relu3 = new ReluLayer();
             // downsample
         ConvLayer* layer4_0_downsample_0_conv = new ConvLayer(cublas_handle, w_path+"layer4.0.downsample.0", 0, 2, false);
         BatchNormLayer* layer4_0_downsample_1_bn = new BatchNormLayer(w_path+"layer4.0.downsample.1");
 
-        layer4_0_conv1->set_input(layer3_5_relu3->get_output());
+        layer4_0_conv1->set_input(layer3_5_relu2->get_output());
         layer4_0_bn1->set_input(layer4_0_conv1->get_output());
         layer4_0_relu1->set_input(layer4_0_bn1->get_output());
-
         layer4_0_conv2->set_input(layer4_0_relu1->get_output());
         layer4_0_bn2->set_input(layer4_0_conv2->get_output());
         layer4_0_relu2->set_input(layer4_0_bn2->get_output());
 
-        layer4_0_conv3->set_input(layer4_0_relu2->get_output());
-        layer4_0_bn3->set_input(layer4_0_conv3->get_output());
-        layer4_0_relu3->set_input(layer4_0_bn3->get_output());
-
-        layer4_0_downsample_0_conv->set_input(layer3_5_relu3->get_output());
+        layer4_0_downsample_0_conv->set_input(layer3_5_relu2->get_output());
         layer4_0_downsample_1_bn->set_input(layer4_0_downsample_0_conv->get_output());
 
             // block2
-        ConvLayer* layer4_1_conv1 = new ConvLayer(cublas_handle, w_path+"layer4.1.conv1", 0, 1, false);
+        ConvLayer* layer4_1_conv1 = new ConvLayer(cublas_handle, w_path+"layer4.1.conv1", 1, 1, false);
         BatchNormLayer* layer4_1_bn1 = new BatchNormLayer(w_path+"layer4.1.bn1");
         ReluLayer* layer4_1_relu1 = new ReluLayer();
-
         ConvLayer* layer4_1_conv2 = new ConvLayer(cublas_handle, w_path+"layer4.1.conv2", 1, 1, false);
         BatchNormLayer* layer4_1_bn2 = new BatchNormLayer(w_path+"layer4.1.bn2");
         ReluLayer* layer4_1_relu2 = new ReluLayer();
 
-        ConvLayer* layer4_1_conv3 = new ConvLayer(cublas_handle, w_path+"layer4.1.conv3", 0, 1, false);
-        BatchNormLayer* layer4_1_bn3 = new BatchNormLayer(w_path+"layer4.1.bn3");
-        ReluLayer* layer4_1_relu3 = new ReluLayer();
-
-        layer4_1_conv1->set_input(layer4_0_relu3->get_output());
+        layer4_1_conv1->set_input(layer4_0_relu2->get_output());
         layer4_1_bn1->set_input(layer4_1_conv1->get_output());
         layer4_1_relu1->set_input(layer4_1_bn1->get_output());
-
         layer4_1_conv2->set_input(layer4_1_relu1->get_output());
         layer4_1_bn2->set_input(layer4_1_conv2->get_output());
         layer4_1_relu2->set_input(layer4_1_bn2->get_output());
 
-        layer4_1_conv3->set_input(layer4_1_relu2->get_output());
-        layer4_1_bn3->set_input(layer4_1_conv3->get_output());
-        layer4_1_relu3->set_input(layer4_1_bn3->get_output());
-
             // block3
-        ConvLayer* layer4_2_conv1 = new ConvLayer(cublas_handle, w_path+"layer4.2.conv1", 0, 1, false);
+        ConvLayer* layer4_2_conv1 = new ConvLayer(cublas_handle, w_path+"layer4.2.conv1", 1, 1, false);
         BatchNormLayer* layer4_2_bn1 = new BatchNormLayer(w_path+"layer4.2.bn1");
         ReluLayer* layer4_2_relu1 = new ReluLayer();
-
         ConvLayer* layer4_2_conv2 = new ConvLayer(cublas_handle, w_path+"layer4.2.conv2", 1, 1, false);
         BatchNormLayer* layer4_2_bn2 = new BatchNormLayer(w_path+"layer4.2.bn2");
         ReluLayer* layer4_2_relu2 = new ReluLayer();
 
-        ConvLayer* layer4_2_conv3 = new ConvLayer(cublas_handle, w_path+"layer4.2.conv3", 0, 1, false);
-        BatchNormLayer* layer4_2_bn3 = new BatchNormLayer(w_path+"layer4.2.bn3");
-        ReluLayer* layer4_2_relu3 = new ReluLayer();
-
-        layer4_2_conv1->set_input(layer4_1_relu3->get_output());
+        layer4_2_conv1->set_input(layer4_1_relu2->get_output());
         layer4_2_bn1->set_input(layer4_2_conv1->get_output());
         layer4_2_relu1->set_input(layer4_2_bn1->get_output());
-
         layer4_2_conv2->set_input(layer4_2_relu1->get_output());
         layer4_2_bn2->set_input(layer4_2_conv2->get_output());
         layer4_2_relu2->set_input(layer4_2_bn2->get_output());
-
-        layer4_2_conv3->set_input(layer4_2_relu2->get_output());
-        layer4_2_bn3->set_input(layer4_2_conv3->get_output());
-        layer4_2_relu3->set_input(layer4_2_bn3->get_output());
-
 
 
         // head
         AvgPoolLayer* avg_pool = new AvgPoolLayer(7);
         LinearLayer* linear = new LinearLayer(cublas_handle, w_path+"fc");
 
-        avg_pool->set_input(layer4_2_relu3->get_output());
+        avg_pool->set_input(layer4_2_relu2->get_output());
         linear->set_input(avg_pool->get_output());
 
 
@@ -550,45 +392,27 @@ int main(int argc, const char** argv)
             layer1_0_conv1->forward();
             layer1_0_bn1->forward();
             layer1_0_relu1->forward();
-
             layer1_0_conv2->forward();
             layer1_0_bn2->forward();
+            *(layer1_0_bn2->get_output()) += *(mp1->get_output());
             layer1_0_relu2->forward();
-
-            layer1_0_conv3->forward();
-            layer1_0_bn3->forward();
-            layer1_0_downsample_0_conv->forward();
-            layer1_0_downsample_1_bn->forward();
-            *(layer1_0_bn3->get_output()) += *(layer1_0_downsample_1_bn->get_output());
-            layer1_0_relu3->forward();
 
 
             layer1_1_conv1->forward();
             layer1_1_bn1->forward();
             layer1_1_relu1->forward();
-
             layer1_1_conv2->forward();
             layer1_1_bn2->forward();
+            *(layer1_1_bn2->get_output()) += *(layer1_0_relu2->get_output());
             layer1_1_relu2->forward();
-
-            layer1_1_conv3->forward();
-            layer1_1_bn3->forward();
-            *(layer1_1_bn3->get_output()) += *(layer1_0_relu3->get_output());
-            layer1_1_relu3->forward();
-
 
             layer1_2_conv1->forward();
             layer1_2_bn1->forward();
             layer1_2_relu1->forward();
-
             layer1_2_conv2->forward();
             layer1_2_bn2->forward();
+            *(layer1_2_bn2->get_output()) += *(layer1_1_relu2->get_output());
             layer1_2_relu2->forward();
-
-            layer1_2_conv3->forward();
-            layer1_2_bn3->forward();
-            *(layer1_2_bn3->get_output()) += *(layer1_1_relu3->get_output());
-            layer1_2_relu3->forward();
 
 
             // layer2
@@ -596,59 +420,39 @@ int main(int argc, const char** argv)
             layer2_0_conv1->forward();
             layer2_0_bn1->forward();
             layer2_0_relu1->forward();
-
             layer2_0_conv2->forward();
             layer2_0_bn2->forward();
-            layer2_0_relu2->forward();
-
-            layer2_0_conv3->forward();
-            layer2_0_bn3->forward();
             layer2_0_downsample_0_conv->forward();
             layer2_0_downsample_1_bn->forward();
-            *(layer2_0_bn3->get_output()) += *(layer2_0_downsample_1_bn->get_output());
-            layer2_0_relu3->forward();
+            *(layer2_0_bn2->get_output()) += *(layer2_0_downsample_1_bn->get_output());
+            layer2_0_relu2->forward();
 
 
             layer2_1_conv1->forward();
             layer2_1_bn1->forward();
             layer2_1_relu1->forward();
-
             layer2_1_conv2->forward();
             layer2_1_bn2->forward();
+            *(layer2_1_bn2->get_output()) += *(layer2_0_relu2->get_output());
             layer2_1_relu2->forward();
-
-            layer2_1_conv3->forward();
-            layer2_1_bn3->forward();
-            *(layer2_1_bn3->get_output()) += *(layer2_0_relu3->get_output());
-            layer2_1_relu3->forward();
 
 
             layer2_2_conv1->forward();
             layer2_2_bn1->forward();
             layer2_2_relu1->forward();
-
             layer2_2_conv2->forward();
             layer2_2_bn2->forward();
+            *(layer2_2_bn2->get_output()) += *(layer2_1_relu2->get_output());
             layer2_2_relu2->forward();
-
-            layer2_2_conv3->forward();
-            layer2_2_bn3->forward();
-            *(layer2_2_bn3->get_output()) += *(layer2_1_relu3->get_output());
-            layer2_2_relu3->forward();
 
 
             layer2_3_conv1->forward();
             layer2_3_bn1->forward();
             layer2_3_relu1->forward();
-
             layer2_3_conv2->forward();
             layer2_3_bn2->forward();
+            *(layer2_3_bn2->get_output()) += *(layer2_2_relu2->get_output());
             layer2_3_relu2->forward();
-
-            layer2_3_conv3->forward();
-            layer2_3_bn3->forward();
-            *(layer2_3_bn3->get_output()) += *(layer2_2_relu3->get_output());
-            layer2_3_relu3->forward();
 
 
             // layer3
@@ -656,83 +460,53 @@ int main(int argc, const char** argv)
             layer3_0_conv1->forward();
             layer3_0_bn1->forward();
             layer3_0_relu1->forward();
-
             layer3_0_conv2->forward();
             layer3_0_bn2->forward();
-            layer3_0_relu2->forward();
-
-            layer3_0_conv3->forward();
-            layer3_0_bn3->forward();
             layer3_0_downsample_0_conv->forward();
             layer3_0_downsample_1_bn->forward();
-            *(layer3_0_bn3->get_output()) += *(layer3_0_downsample_1_bn->get_output());
-            layer3_0_relu3->forward();
+            *(layer3_0_bn2->get_output()) += *(layer3_0_downsample_1_bn->get_output());
+            layer3_0_relu2->forward();
 
 
             layer3_1_conv1->forward();
             layer3_1_bn1->forward();
             layer3_1_relu1->forward();
-
             layer3_1_conv2->forward();
             layer3_1_bn2->forward();
+            *(layer3_1_bn2->get_output()) += *(layer3_0_relu2->get_output());
             layer3_1_relu2->forward();
-
-            layer3_1_conv3->forward();
-            layer3_1_bn3->forward();
-            *(layer3_1_bn3->get_output()) += *(layer3_0_relu3->get_output());
-            layer3_1_relu3->forward();
 
             layer3_2_conv1->forward();
             layer3_2_bn1->forward();
             layer3_2_relu1->forward();
-
             layer3_2_conv2->forward();
             layer3_2_bn2->forward();
+            *(layer3_2_bn2->get_output()) += *(layer3_1_relu2->get_output());
             layer3_2_relu2->forward();
-
-            layer3_2_conv3->forward();
-            layer3_2_bn3->forward();
-            *(layer3_2_bn3->get_output()) += *(layer3_1_relu3->get_output());
-            layer3_2_relu3->forward();
 
             layer3_3_conv1->forward();
             layer3_3_bn1->forward();
             layer3_3_relu1->forward();
-
             layer3_3_conv2->forward();
             layer3_3_bn2->forward();
+            *(layer3_3_bn2->get_output()) += *(layer3_2_relu2->get_output());
             layer3_3_relu2->forward();
-
-            layer3_3_conv3->forward();
-            layer3_3_bn3->forward();
-            *(layer3_3_bn3->get_output()) += *(layer3_2_relu3->get_output());
-            layer3_3_relu3->forward();
 
             layer3_4_conv1->forward();
             layer3_4_bn1->forward();
             layer3_4_relu1->forward();
-
             layer3_4_conv2->forward();
             layer3_4_bn2->forward();
+            *(layer3_4_bn2->get_output()) += *(layer3_3_relu2->get_output());
             layer3_4_relu2->forward();
-
-            layer3_4_conv3->forward();
-            layer3_4_bn3->forward();
-            *(layer3_4_bn3->get_output()) += *(layer3_3_relu3->get_output());
-            layer3_4_relu3->forward();
 
             layer3_5_conv1->forward();
             layer3_5_bn1->forward();
             layer3_5_relu1->forward();
-
             layer3_5_conv2->forward();
             layer3_5_bn2->forward();
+            *(layer3_5_bn2->get_output()) += *(layer3_4_relu2->get_output());
             layer3_5_relu2->forward();
-
-            layer3_5_conv3->forward();
-            layer3_5_bn3->forward();
-            *(layer3_5_bn3->get_output()) += *(layer3_4_relu3->get_output());
-            layer3_5_relu3->forward();
 
 
             // layer4
@@ -740,44 +514,29 @@ int main(int argc, const char** argv)
             layer4_0_conv1->forward();
             layer4_0_bn1->forward();
             layer4_0_relu1->forward();
-
             layer4_0_conv2->forward();
             layer4_0_bn2->forward();
-            layer4_0_relu2->forward();
-
-            layer4_0_conv3->forward();
-            layer4_0_bn3->forward();
             layer4_0_downsample_0_conv->forward();
             layer4_0_downsample_1_bn->forward();
-            *(layer4_0_bn3->get_output()) += *(layer4_0_downsample_1_bn->get_output());
-            layer4_0_relu3->forward();
+            *(layer4_0_bn2->get_output()) += *(layer4_0_downsample_1_bn->get_output());
+            layer4_0_relu2->forward();
 
 
             layer4_1_conv1->forward();
             layer4_1_bn1->forward();
             layer4_1_relu1->forward();
-
             layer4_1_conv2->forward();
             layer4_1_bn2->forward();
+            *(layer4_1_bn2->get_output()) += *(layer4_0_relu2->get_output());
             layer4_1_relu2->forward();
-
-            layer4_1_conv3->forward();
-            layer4_1_bn3->forward();
-            *(layer4_1_bn3->get_output()) += *(layer4_0_relu3->get_output());
-            layer4_1_relu3->forward();
 
             layer4_2_conv1->forward();
             layer4_2_bn1->forward();
             layer4_2_relu1->forward();
-
             layer4_2_conv2->forward();
             layer4_2_bn2->forward();
+            *(layer4_2_bn2->get_output()) += *(layer4_1_relu2->get_output());
             layer4_2_relu2->forward();
-
-            layer4_2_conv3->forward();
-            layer4_2_bn3->forward();
-            *(layer4_2_bn3->get_output()) += *(layer4_1_relu3->get_output());
-            layer4_2_relu3->forward();
 
             // head
             avg_pool->forward();

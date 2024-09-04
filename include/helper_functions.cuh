@@ -2,7 +2,6 @@
 #define CUDA_PROJ_HELPER_FUNCTIONS_CUH
 
 #include <cuda_runtime.h>
-#include <cublas.h>
 #include <cublas_v2.h>
 
 #include <sstream>

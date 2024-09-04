@@ -2,7 +2,6 @@
 #define CUDA_PROJ_NET_CUH
 
 #include <vector>
-#include <cublas.h>
 #include <cublas_v2.h>
 #include "helper_functions.cuh"
 

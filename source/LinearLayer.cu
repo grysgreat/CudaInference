@@ -2,7 +2,6 @@
 #include "LinearLayer.hpp"
 #include "Tensor.hpp"
 
-#include <cublas.h>
 #include <cublas_v2.h>
 #include <thrust/fill.h>
 #include <thrust/device_ptr.h>

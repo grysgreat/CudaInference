@@ -1,7 +1,7 @@
 #ifndef CUDA_PROJ_COMPUTE_UTIL_CUH
 #define CUDA_PROJ_COMPUTE_UTIL_CUH
 
-#include <cublas.h>
+
 #include <cublas_v2.h>
 
 __global__ void debug_ker(float* ptr, int addr);

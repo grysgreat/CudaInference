@@ -1,2 +1,6 @@
 build
 BUILD
+*.npy
+layer*
+python/weights*/*
+python/weights/*

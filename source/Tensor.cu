@@ -10,7 +10,7 @@ Tensor<T>::Tensor(Size size_p):
     for (int i = 0; i < _size.size(); ++i) {
         _count *= _size[i];
     }
-    cudaMalloc(&_ptr, _count*sizeof(T));
+    cudaMalloc((void **)&_ptr, _count*sizeof(T));
 }
 
 template<typename T>

@@ -1,11 +1,11 @@
 import numpy as np
 import torch
-from myresnet import resnet18
+from myresnet import resnet34
 from collections import OrderedDict
 from sys import argv
 from operator import attrgetter
 
-export = False
+export = True
 
 with torch.no_grad():
     model = torch.nn.Sequential(OrderedDict([
@@ -17,12 +17,12 @@ with torch.no_grad():
     ]))
 
 
-model = resnet18(pretrained=True)
+model = resnet34(pretrained=True)
 #print(model)
 if export:
     for modn, mod in model.named_modules():
         tensors = []
-        print("CHECK", modn)
+        # print("CHECK", modn)
         if 'bn' in modn or 'downsample.1' in modn:
             tensors.append((modn+'.running_mean', mod.running_mean))
             tensors.append((modn+'.running_var', mod.running_var))

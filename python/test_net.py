@@ -16,11 +16,11 @@ tr = transforms.Compose(
     ]
 )
 
-#img = Image.open("../images/220px-Lenna_test_image.PPM")
+img = Image.open("../images/cat.ppm")
 
-#tens = tr(img).unsqueeze(0)
+tens = tr(img).unsqueeze(0)
 batch_size = 16
-iters = 1000
+iters = 1
 tens = torch.ones(size=(batch_size, 3, 224, 224)).float()
 
 t = 0
@@ -30,6 +30,9 @@ for i in range(iters):
     tens = tens.cuda()
     out = model(tens)
     out.cpu()
+
+    predicted, index  = torch.max(out1, 1)
+
 
     e = time.time()
     t += e - s
